@@ -1,0 +1,18 @@
+# Binaries
+server
+
+# Go
+bin/
+*.exe
+*.out
+vendor/
+
+# Environment
+.env
+
+# OS
+.DS_Store
+
+# Docker
+docker-compose.override.yml
+
