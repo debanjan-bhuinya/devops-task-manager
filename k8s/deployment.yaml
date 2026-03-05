@@ -3,17 +3,26 @@ kind: Deployment
 metadata:
   name: devops-task-manager
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: task-manager
+      app: devops-task-manager
   template:
     metadata:
       labels:
-        app: task-manager
+        app: devops-task-manager
     spec:
       containers:
-      - name: task-manager
-        image: debanjan-bhuinya/devops-task-manager:latest
-        ports:
-        - containerPort: 8080
+        - name: task-manager
+          image: pikachu003/devops-task-manager:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DB_HOST
+              value: postgres
+            - name: DB_USER
+              value: devops
+            - name: DB_PASSWORD
+              value: devops
+            - name: DB_NAME
+              value: taskdb

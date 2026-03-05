@@ -5,7 +5,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: task-manager
+    app: devops-task-manager
   ports:
     - port: 80
       targetPort: 8080
