@@ -1,25 +1,23 @@
-# -------- Stage 1: Build --------
+# Build stage
 FROM golang:1.24-alpine AS builder
 
 WORKDIR /app
 
-# Copy go mod first (for caching)
+# Copy go modules first
 COPY go.mod go.sum ./
 RUN go mod download
 
-# Copy full source
+# Copy all source code
 COPY . .
 
 # Build binary
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o server ./cmd/server/main.go
 
-
-# -------- Stage 2: Runtime --------
+# Final stage
 FROM alpine:latest
 
 WORKDIR /app
 
-# Copy binary from builder
 COPY --from=builder /app/server .
 
 EXPOSE 8080
