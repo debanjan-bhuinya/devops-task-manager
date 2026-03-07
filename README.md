@@ -2,34 +2,34 @@
 
 This project demonstrates a **containerized Go REST API deployed on Kubernetes with a full monitoring stack** using Prometheus and Grafana.
 
-## Tech Stack
+## Architecture
 
-- Go (Golang)
-- Chi Router
-- PostgreSQL
-- Docker
-- Kubernetes (Minikube)
-- Prometheus
-- Grafana
-- Helm
-- GitHub Actions
+```mermaid
+graph TD
+A[User] --> B[Kubernetes Service]
+B --> C[Go API Pod]
+C --> D[PostgreSQL Pod]
+
+C --> E[/metrics endpoint/]
+
+E --> F[Prometheus]
+F --> G[Grafana]
+F --> H[Alertmanager]
 
 ---
 
-# Architecture
+## Tech Stack
 
-User
- ↓
-Kubernetes Service
- ↓
-Go API Pod
- ↓
-PostgreSQL Pod
-
-Monitoring Stack
-Prometheus → Collect metrics
-Grafana → Visual dashboards
-Alertmanager → Alerts
+| Layer | Technology |
+|------|-------------|
+Application | Go (Golang)
+API Router | Chi
+Database | PostgreSQL
+Containerization | Docker
+Orchestration | Kubernetes
+Monitoring | Prometheus
+Visualization | Grafana
+CI/CD | GitHub Actions
 
 ---
 
@@ -86,7 +86,7 @@ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 
 # Screenshots
 
-## Monitoring Screenshots
+//## Monitoring Screenshots
 
 ### Grafana Dashboard
 
@@ -99,6 +99,17 @@ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 ### Kubernetes Pods Running
 
 ![Kubernetes Pods](screenshots/kubernetes-pods.png)
+
+---
+
+## What I Learned
+
+- Containerizing applications with Docker
+- Deploying microservices on Kubernetes
+- Managing PostgreSQL inside Kubernetes
+- Implementing monitoring using Prometheus and Grafana
+- Exposing application metrics using Prometheus client libraries
+- Creating ServiceMonitor resources for automatic scraping
 
 ---
 
