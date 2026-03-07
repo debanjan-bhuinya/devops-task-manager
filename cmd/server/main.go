@@ -8,6 +8,7 @@ import (
 	"github.com/debanjan-bhuinya/devops-task-manager/internal/database"
 	"github.com/debanjan-bhuinya/devops-task-manager/internal/handler"
 	"github.com/go-chi/chi/v5"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 func main() {
@@ -22,6 +23,9 @@ func main() {
 	}
 
 	r := chi.NewRouter()
+
+	// Prometheus metrics endpoint
+	r.Handle("/metrics", promhttp.Handler())
 
 	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
   	  w.Header().Set("Content-Type", "application/json")

@@ -1,42 +1,95 @@
-# 🚀 DevOps Task Manager
+# DevOps Task Manager – Kubernetes Monitoring Project
 
-A production-style Go REST API with PostgreSQL, fully containerized using Docker and Docker Compose.
+This project demonstrates a **containerized Go REST API deployed on Kubernetes with a full monitoring stack** using Prometheus and Grafana.
 
----
+## Tech Stack
 
-## 🏗️ Architecture
-
-Go (Chi Router)  
-PostgreSQL  
-Docker  
-Docker Compose  
-Persistent Volumes  
-
----
-
-## 📦 Features
-
-- Health Check Endpoint
-- Create User API
-- List Users API
-- PostgreSQL Integration
-- Environment-based Configuration
-- Multi-stage Docker Build
-- Persistent Database Volume
-
----
-
-## 🛠️ Tech Stack
-
-- Go 1.24
+- Go (Golang)
 - Chi Router
-- PostgreSQL 15
+- PostgreSQL
 - Docker
-- Docker Compose
+- Kubernetes (Minikube)
+- Prometheus
+- Grafana
+- Helm
+- GitHub Actions
 
 ---
 
-## 🚀 Run Locally
+# Architecture
 
-```bash
-docker compose up --build
+User
+ ↓
+Kubernetes Service
+ ↓
+Go API Pod
+ ↓
+PostgreSQL Pod
+
+Monitoring Stack
+Prometheus → Collect metrics
+Grafana → Visual dashboards
+Alertmanager → Alerts
+
+---
+
+# Features
+
+- Containerized Go REST API
+- Kubernetes deployment
+- PostgreSQL database
+- CI/CD pipeline with GitHub Actions
+- Prometheus monitoring
+- Grafana dashboards
+- ServiceMonitor for automatic metric scraping
+
+---
+
+# API Endpoints
+
+Health check
+/api/v1/health
+
+
+Users
+GET /api/v1/users
+POST /api/v1/users
+
+Metrics endpoint
+/metrics
+
+
+---
+
+# Kubernetes Deployment
+
+Apply resources
+kubectl apply -f k8s/
+
+Check pods
+kubectl get pods
+
+
+---
+
+# Monitoring Stack
+
+Install monitoring stack
+helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring
+
+
+Access Grafana
+kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
+
+
+---
+
+# Screenshots
+
+Grafana dashboards showing Kubernetes and application metrics.
+
+---
+
+# Author
+
+Debanjan Bhuinya

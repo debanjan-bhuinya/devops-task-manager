@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: task-manager
-          image: pikachu003/devops-task-manager:latest
+          image: pikachu003/devops-task-manager:metrics
           ports:
             - containerPort: 8080
           env:
