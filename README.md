@@ -15,7 +15,7 @@ C --> E[/metrics endpoint/]
 E --> F[Prometheus]
 F --> G[Grafana]
 F --> H[Alertmanager]
-
+```
 ---
 
 ## Tech Stack
@@ -86,7 +86,7 @@ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 
 # Screenshots
 
-//## Monitoring Screenshots
+## Monitoring Screenshots
 
 ### Grafana Dashboard
 
