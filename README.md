@@ -86,7 +86,19 @@ kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 
 # Screenshots
 
-Grafana dashboards showing Kubernetes and application metrics.
+## Monitoring Screenshots
+
+### Grafana Dashboard
+
+![Grafana Dashboard](screenshots/grafana-dashboard.png)
+
+### Prometheus Metrics Query
+
+![Prometheus Query](screenshots/prometheus-query.png)
+
+### Kubernetes Pods Running
+
+![Kubernetes Pods](screenshots/kubernetes-pods.png)
 
 ---
 
