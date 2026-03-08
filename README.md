@@ -69,6 +69,26 @@ kubectl apply -f k8s/
 Check pods
 kubectl get pods
 
+---
+
+## Kubernetes Ingress
+
+The application is exposed using an NGINX Ingress Controller.
+
+Example domain routing:
+
+```
+http://task-manager.local
+```
+
+Ingress architecture:
+
+```mermaid
+graph TD
+User --> Ingress
+Ingress --> Service
+Service --> Pod
+```
 
 ---
 
