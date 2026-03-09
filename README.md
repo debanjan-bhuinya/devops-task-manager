@@ -101,6 +101,35 @@ helm install monitoring prometheus-community/kube-prometheus-stack -n monitoring
 Access Grafana
 kubectl port-forward svc/monitoring-grafana -n monitoring 3000:80
 
+---
+
+## HTTPS Enabled
+
+The application is exposed securely using TLS certificates managed by cert-manager.
+
+Endpoint:
+
+https://task-manager.local
+
+![https](screenshots/https-working.png)
+
+---
+
+## Horizontal Pod Autoscaling
+
+The application automatically scales based on CPU usage using Kubernetes HPA.
+
+Configuration:
+
+minPods: 1  
+maxPods: 10  
+targetCPUUtilization: 50%
+
+Example scaling event:
+
+cpu: 81% / 50% → Kubernetes created additional pods automatically.
+
+![Horizontal Pod Autoscaling](screenshots/autoscaling-working.png)
 
 ---
 
