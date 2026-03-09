@@ -29,8 +29,3 @@ jobs:
           context: .
           push: true
           tags: pikachu003/devops-task-manager:latest
-
-      - name: Update Kubernetes Deployment
-        run: |
-          kubectl set image deployment/devops-task-manager \
-          task-manager=pikachu003/devops-task-manager:latest
