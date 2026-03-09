@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: DevOps CI/CD
 
 on:
   push:
@@ -6,10 +6,11 @@ on:
       - main
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
+
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -28,3 +29,8 @@ jobs:
           context: .
           push: true
           tags: pikachu003/devops-task-manager:latest
+
+      - name: Update Kubernetes Deployment
+        run: |
+          kubectl set image deployment/devops-task-manager \
+          task-manager=pikachu003/devops-task-manager:latest
