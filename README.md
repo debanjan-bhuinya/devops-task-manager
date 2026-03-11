@@ -89,12 +89,13 @@ G --> H[Go API Pods]
 
 G --> I[PostgreSQL Database]
 
-H --> J[/metrics endpoint]
+H --> J[Metrics Endpoint]
 
 J --> K[Prometheus]
 
 K --> L[Grafana Dashboards]
 ```
+
 ---
 
 ## Tech Stack
