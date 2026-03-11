@@ -1,7 +1,5 @@
 # DevOps Task Manager – Kubernetes Monitoring Project
 
-# DevOps Task Manager – Kubernetes GitOps Platform
-
 ![Go](https://img.shields.io/badge/Go-1.21-blue)
 ![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestrated-blue)
@@ -9,7 +7,7 @@
 ![Grafana](https://img.shields.io/badge/Visualization-Grafana-yellow)
 ![ArgoCD](https://img.shields.io/badge/GitOps-ArgoCD-red)
 ![CI/CD](https://img.shields.io/badge/CI/CD-GitHub%20Actions-green)
-![CI](https://github.com/debanjan-bhuinya/devops-task-manager/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/debanjan-bhuinya/devops-task-manager/actions/workflows/docker-build.yml/badge.svg)](https://github.com/debanjan-bhuinya/devops-task-manager/actions)
 
 This project demonstrates a **containerized Go REST API deployed on Kubernetes with a full monitoring stack** using Prometheus and Grafana.
 
