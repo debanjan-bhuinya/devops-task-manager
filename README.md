@@ -1,20 +1,101 @@
 # DevOps Task Manager – Kubernetes Monitoring Project
 
+# DevOps Task Manager – Kubernetes GitOps Platform
+
+![Go](https://img.shields.io/badge/Go-1.21-blue)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-Orchestrated-blue)
+![Prometheus](https://img.shields.io/badge/Monitoring-Prometheus-orange)
+![Grafana](https://img.shields.io/badge/Visualization-Grafana-yellow)
+![ArgoCD](https://img.shields.io/badge/GitOps-ArgoCD-red)
+![CI/CD](https://img.shields.io/badge/CI/CD-GitHub%20Actions-green)
+![CI](https://github.com/debanjan-bhuinya/devops-task-manager/actions/workflows/ci.yml/badge.svg)
+
 This project demonstrates a **containerized Go REST API deployed on Kubernetes with a full monitoring stack** using Prometheus and Grafana.
 
-## Architecture
+## Quick Start
+
+Start Kubernetes cluster
+
+minikube start
+
+Deploy application
+
+kubectl apply -f k8s/
+
+Check running pods
+
+kubectl get pods
+
+Access application
+
+https://task-manager.local
+
+---
+
+## DevOps Workflow
+
+1. Developer pushes code to GitHub
+2. GitHub Actions builds Docker image
+3. Image is pushed to DockerHub
+4. ArgoCD detects repository changes
+5. Kubernetes cluster automatically syncs
+6. Prometheus scrapes metrics
+7. Grafana visualizes system performance
+
+---
+
+## Project Highlights
+
+- Containerized Go API using Docker
+- Kubernetes microservice deployment
+- PostgreSQL database inside Kubernetes
+- Monitoring with Prometheus and Grafana
+- HTTPS using cert-manager
+- Horizontal Pod Autoscaling (HPA)
+- CI/CD automation with GitHub Actions
+- GitOps deployment using ArgoCD
+
+---
+
+## DevOps Skills Demonstrated
+
+- Containerization
+- Kubernetes orchestration
+- Infrastructure monitoring
+- GitOps deployment
+- CI/CD pipeline automation
+- Microservice architecture
+- Observability
+
+---
+
+## Full DevOps Architecture
 
 ```mermaid
 graph TD
-A[User] --> B[Kubernetes Service]
-B --> C[Go API Pod]
-C --> D[PostgreSQL Pod]
 
-C --> E[/metrics endpoint/]
+A[Developer Push Code] --> B[GitHub Repository]
 
-E --> F[Prometheus]
-F --> G[Grafana]
-F --> H[Alertmanager]
+B --> C[GitHub Actions CI]
+
+C --> D[Docker Image Build]
+
+D --> E[DockerHub]
+
+E --> F[ArgoCD GitOps]
+
+F --> G[Kubernetes Cluster]
+
+G --> H[Go API Pods]
+
+G --> I[PostgreSQL Database]
+
+H --> J[/metrics endpoint]
+
+J --> K[Prometheus]
+
+K --> L[Grafana Dashboards]
 ```
 ---
 
@@ -68,6 +149,23 @@ kubectl apply -f k8s/
 
 Check pods
 kubectl get pods
+
+---
+
+## CI/CD Pipeline
+
+The project uses GitHub Actions to automate the build and container publishing process.
+
+Pipeline workflow:
+
+1. Developer pushes code to GitHub
+2. GitHub Actions builds the Docker image
+3. Image is pushed to DockerHub
+4. ArgoCD detects the change and deploys to Kubernetes
+
+Example pipeline flow:
+
+Developer → GitHub → GitHub Actions → DockerHub → ArgoCD → Kubernetes
 
 ---
 
@@ -133,6 +231,26 @@ cpu: 81% / 50% → Kubernetes created additional pods automatically.
 
 ---
 
+## GitOps Deployment with ArgoCD
+
+The deployment is managed using GitOps principles with ArgoCD.
+
+ArgoCD continuously monitors the GitHub repository for changes in the Kubernetes manifests.
+
+When a change is detected:
+
+1. ArgoCD pulls the updated manifests
+2. Compares them with the cluster state
+3. Automatically synchronizes the cluster
+
+This ensures that the Kubernetes cluster always reflects the desired state defined in Git.
+
+GitOps workflow:
+
+Git Push → ArgoCD Sync → Kubernetes Deployment
+
+---
+
 # Screenshots
 
 ## Monitoring Screenshots
@@ -149,16 +267,38 @@ cpu: 81% / 50% → Kubernetes created additional pods automatically.
 
 ![Kubernetes Pods](screenshots/kubernetes-pods.png)
 
+### GitHub Actions Pipeline
+
+![GitHub Actions](screenshots/github-actions.png)
+
+### ArgoCD Application Dashboard
+
+![ArgoCD Dashboard](screenshots/argocd-dashboard.png)
+
 ---
 
 ## What I Learned
 
-- Containerizing applications with Docker
-- Deploying microservices on Kubernetes
+- Containerizing applications using Docker
+- Deploying microservices to Kubernetes
 - Managing PostgreSQL inside Kubernetes
-- Implementing monitoring using Prometheus and Grafana
-- Exposing application metrics using Prometheus client libraries
-- Creating ServiceMonitor resources for automatic scraping
+- Implementing monitoring with Prometheus and Grafana
+- Creating ServiceMonitor resources for metric scraping
+- Exposing services using Kubernetes Ingress
+- Securing applications using TLS with cert-manager
+- Implementing Horizontal Pod Autoscaling (HPA)
+- Building CI pipelines with GitHub Actions
+- Implementing GitOps deployment using ArgoCD
+
+---
+
+## Future Improvements
+
+- Centralized logging using Loki
+- Distributed tracing using Jaeger
+- Deploying the platform on AWS EKS or GKE
+- Infrastructure provisioning with Terraform
+- Implementing a service mesh using Istio
 
 ---
 
